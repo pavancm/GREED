@@ -3,7 +3,7 @@
 **Pavan C. Madhusudana**, Neil Birkbeck, Yilin Wang, Balu Adsumilli and Alan C. Bovik
 
 ## Usage
-The code has been tested with python 3.6. Please refer to requirements.txt for details.
+The code has been tested with python 3.6. Please refer to [requirements.txt](requirements.txt) for details.
 
 ### Demo data download
 Linux and Mac users run the following commands to download sample videos for demo code. Videos with two different resolutions 1080p and 4K are downloaded.
