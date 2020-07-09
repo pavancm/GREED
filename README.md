@@ -34,3 +34,6 @@ Second way is to simply calculate GREED features. The following commands can be 
 python3 demo_feat.py --ref_path data/books_crf_0_120fps.yuv --dist_path data/books_crf_28_30fps.yuv --ref_fps 120 --dist_fps 30 --height 1080 --width 1920 --bit_depth 8 --temp_filt bior22
 python3 demo_feat.py --ref_path data/Flips_crf_0_120fps.yuv --dist_path data/Flips_crf_48_30fps.yuv --ref_fps 120 --dist_fps 30 --height 2160 --width 3840 --bit_depth 10 --temp_filt bior22
 ```
+
+## Contact
+Please contact Pavan (pavan.madhusudana@gmail.com) if you have any questions, suggestions or corrections to the above implementation.
