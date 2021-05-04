@@ -7,7 +7,7 @@ from entropy.estimateggdparam import cal_shape_kurtosis, entropy_ggd
 def est_params_ggd(y, blk, sigma_nsq):
     """ 'ss' and 'ent' refer to the local variance parameter and the
         entropy at different locations of the subband
-        y is a subband of the decomposition, 'blk' is the block size, 'sigma' is
+        y is a subband of the decomposition, 'blk' is the block size, 'sigma_nsq' is
         the neural noise variance """
     
     sizeim = np.floor(np.array(y.shape)/blk) * blk
@@ -23,13 +23,15 @@ def est_params_ggd(y, blk, sigma_nsq):
     #window = np.ones(blk*blk)/(blk*blk)
     ss = np.sqrt(np.sum((temp**2)*window[:,None], axis=0).\
     reshape((int(sizeim[1]/blk), int(sizeim[0]/blk))).T)
+    ss = ss + sigma_nsq
+    
     sigma_sq = np.var(y.ravel())
-    multiplier = (sigma_sq/(sigma_sq - sigma_nsq))**2
+    multiplier = (sigma_sq/(sigma_sq + sigma_nsq))**2
     
-    kurt_obs = kurtosis(y.ravel()) + 3
-    kurt_pris = kurt_obs*multiplier
+    kurt_obs = kurtosis(y.ravel())
+    kurt_noisy = kurt_obs*multiplier + 3
     
-    gam = cal_shape_kurtosis(kurt_pris)
+    gam = cal_shape_kurtosis(kurt_noisy)
     #Compute entropy
     ent = entropy_ggd(gam,ss)
     return ss, ent
