@@ -51,17 +51,20 @@ def greed_feat(args):
     
     greed_feat = np.zeros(16,dtype=np.float32)
     for idx,scale_factor in enumerate(scales):
-        #Temporal Pooling of reference entropies to match the number of frames
-        ref_entropy['spatial_scale' + str(scale_factor)] = \
-        entropy_temporal_pool(ref_entropy['spatial_scale' + str(scale_factor)][None,:,:,:],\
-                                   int(fps),ref_fps,end_lim)
-        ref_entropy['temporal_scale' + str(scale_factor)] = \
-        entropy_temporal_pool(ref_entropy['temporal_scale' + str(scale_factor)],\
-                                          int(fps),ref_fps,end_lim)
+        if int(fps) != ref_fps:
+            #Temporal Pooling of reference entropies to match the number of frames
+            ref_entropy['spatial_scale' + str(scale_factor)] = \
+            entropy_temporal_pool(ref_entropy['spatial_scale' + str(scale_factor)][None,:,:,:],\
+                                       int(fps),ref_fps,end_lim)
+            ref_entropy['temporal_scale' + str(scale_factor)] = \
+            entropy_temporal_pool(ref_entropy['temporal_scale' + str(scale_factor)],\
+                                              int(fps),ref_fps,end_lim)
         
     #    spatial entropy difference
         ent_diff_sp = np.abs(ref_entropy['spatial_scale' + str(scale_factor)] - \
                              dist_entropy['spatial_scale' + str(scale_factor)])
+        if len(ent_diff_sp.shape) < 4:
+            ent_diff_sp = ent_diff_sp[None,:,:,:]
         spatial_ent = np.mean(np.mean(ent_diff_sp[0,:,:,:],axis=0),axis=0)
         greed_feat[idx] = np.mean(spatial_ent)
         
