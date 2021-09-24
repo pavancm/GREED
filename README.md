@@ -1,4 +1,4 @@
-# ST-GREED: Space-Time Generalized EntropicDifferences for Frame Rate Dependent VideoQuality
+# ST-GREED: Space-Time Generalized EntropicDifferences for Frame Rate Dependent Video Quality
 
 **Pavan C. Madhusudana**, Neil Birkbeck, Yilin Wang, Balu Adsumilli and Alan C. Bovik
 
