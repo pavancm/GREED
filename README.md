@@ -37,3 +37,14 @@ python3 demo_feat.py --ref_path data/Flips_crf_0_120fps.yuv --dist_path data/Fli
 
 ## Contact
 Please contact Pavan (pavan.madhusudana@gmail.com) if you have any questions, suggestions or corrections to the above implementation.
+
+## Citation
+```
+@article{madhusudana2021st,
+  title={{ST-GREED}: Space-time generalized entropic differences for frame rate dependent video quality prediction},
+  author={Madhusudana, Pavan C and Birkbeck, Neil and Wang, Yilin and Adsumilli, Balu and Bovik, Alan C},
+  journal={IEEE Trans. Image Process.},
+  year={2021},
+  publisher={IEEE}
+}
+```
