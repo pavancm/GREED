@@ -29,7 +29,7 @@ def main(args):
     
     #load svm model
     if args.height < 1080:
-        #low resoltuion model
+        #low resolution model
         model = svm_load_model('model_params/' + args.temp_filt + '_lowres.model')
     else:
         #high resolution model
