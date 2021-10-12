@@ -28,7 +28,12 @@ def main(args):
     GREED_feat = greed_feat(args)
     
     #load svm model
-    model = svm_load_model('model_params/' + args.temp_filt + '.model')
+    if args.height < 1080:
+        #low resoltuion model
+        model = svm_load_model('model_params/' + args.temp_filt + '_lowres.model')
+    else:
+        #high resolution model
+        model = svm_load_model('model_params/' + args.temp_filt + '.model')
     
     #load parameter of trained features
     feat_param = scipy.io.loadmat('model_params/' + args.temp_filt + '_params.mat')
