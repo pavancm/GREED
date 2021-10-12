@@ -15,11 +15,17 @@ def greed_feat(args):
     gray = True
     ref_fps = args.ref_fps
     bit_depth = args.bit_depth
+    
     if bit_depth == 8:
-        multiplier = 1.5
-        scales = [4,5]      #for 1080p resolution
+        multiplier = 1.5    #8 bit yuv420 video
     else:
-        multiplier = 3      #10 bit video
+        multiplier = 3      #10 bit yuv420 video
+    
+    if height < 1080:
+        scales = [3,4]      #for lower than 1080p resolution
+    elif height < 2160:
+        scales = [4,5]      #1080p resolution
+    else:
         scales = [5,6]      #for 4K resolution
     
     #calculate number of frames in reference and distorted    
